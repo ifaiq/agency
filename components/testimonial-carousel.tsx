@@ -12,7 +12,7 @@ const testimonials = [
     role: "CTO, TechStart",
     content:
       "Luminosa transformed our messy codebase into a scalable architecture. Our app is now 3x faster and our development velocity has increased significantly.",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/AJ.png?height=100&width=100",
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ const testimonials = [
     role: "Founder, DataFlow",
     content:
       "We needed an MVP fast to secure our next funding round. Luminosa delivered a polished product in just 6 weeks that impressed our investors and early users.",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/sc.jpg?height=100&width=100",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const testimonials = [
     role: "Product Lead, FinEdge",
     content:
       "Their expertise in AI integration helped us automate our core processes. What used to take days now happens in minutes. Game-changing for our business.",
-    image: "/placeholder.svg?height=100&width=100",
+    image: "/mr.jpg?height=100&width=100",
   },
 ]
 

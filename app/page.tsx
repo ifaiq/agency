@@ -28,12 +28,12 @@ export default function Home() {
               Contact
             </Link>
           </nav>
-          <div className="flex items-center gap-4">
+          {/* <div className="flex items-center gap-4">
             <Button>
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-          </div>
+          </div> */}
         </div>
       </header>
 
@@ -53,10 +53,10 @@ export default function Home() {
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  {/* <Button size="lg" className="bg-primary hover:bg-primary/90">
                     Launch Your MVP Now
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                  </Button> */}
                   <Button size="lg" variant="outline">
                     Get a Free Code Audit
                   </Button>
@@ -66,7 +66,7 @@ export default function Home() {
                 <div className="relative w-full max-w-[500px] aspect-square rounded-lg overflow-hidden shadow-2xl">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/40 mix-blend-overlay" />
                   <img
-                    src="/placeholder.svg?height=600&width=600"
+                    src="/mvp.jpg"
                     alt="Abstract code visualization"
                     className="object-cover w-full h-full"
                   />
@@ -120,7 +120,7 @@ export default function Home() {
                 <div className="relative w-full max-w-[500px] aspect-square rounded-lg overflow-hidden shadow-2xl">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/30 mix-blend-overlay" />
                   <img
-                    src="/placeholder.svg?height=600&width=600"
+                    src="/team.jpg"
                     alt="Team collaboration"
                     className="object-cover w-full h-full"
                   />
