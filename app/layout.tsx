@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Luminosa - From Idea to MVP. Fast.",
   description: "We build scalable, investor-ready products and revamp codebases to help you scale with confidence.",
-    generator: 'v0.dev'
+  icons: "/lli.jpg",
 }
 
 export default function RootLayout({

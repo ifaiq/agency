@@ -56,10 +56,10 @@ export default function Home() {
                   {/* <Button size="lg" className="bg-primary hover:bg-primary/90">
                     Launch Your MVP Now
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button> */}
+                  </Button> 
                   <Button size="lg" variant="outline">
                     Get a Free Code Audit
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
               <div className="flex justify-center lg:justify-end">

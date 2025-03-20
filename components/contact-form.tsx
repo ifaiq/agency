@@ -89,10 +89,16 @@ export default function ContactForm() {
       </div>
 
       <div className="flex items-center gap-2">
-        <Button type="button" variant="outline" className="flex items-center gap-2">
-          <CalendarIcon className="h-4 w-4" />
-          Schedule a Call
-        </Button>
+      <Button
+  type="button"
+  variant="outline"
+  className="flex items-center gap-2"
+  onClick={() => window.open("https://calendly.com/faiq55555", "_blank")}
+>
+  <CalendarIcon className="h-4 w-4" />
+  Schedule a Call
+</Button>
+
 
         <Button type="submit" className="flex-1" disabled={isSubmitting}>
           {isSubmitting ? (
