@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 36 30% 96%;
+    --foreground: 36 10% 15%;
+
+    --card: 36 30% 99%;
+    --card-foreground: 36 10% 15%;
+
+    --popover: 36 30% 99%;
+    --popover-foreground: 36 10% 15%;
+
+    --primary: 36 70% 50%;
+    --primary-foreground: 36 10% 98%;
+
+    --secondary: 100 25% 40%;
+    --secondary-foreground: 100 10% 98%;
+
+    --muted: 36 15% 92%;
+    --muted-foreground: 36 5% 45%;
+
+    --accent: 100 25% 90%;
+    --accent-foreground: 100 10% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 36 15% 85%;
+    --input: 36 15% 85%;
+    --ring: 36 70% 50%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
