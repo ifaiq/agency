@@ -13,39 +13,48 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
-  
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    service: "",
+    message: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSelectChange = (value: string) => {
+    setFormData({ ...formData, service: value });
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-  
-    const formData = {
-      name: e.currentTarget.name.value || "",
-      email: e.currentTarget.email.value,
-      company: e.currentTarget.company.value,
-      service: e.currentTarget.service?.value || "", 
-      message: e.currentTarget.message.value
-    };
-  
+
     try {
-      const response = await fetch('https://script.google.com/macros/s/AKfycbzjlnB7zrSNxojf_pDNmJZFYaViMj08eGqmjfJTQdiOhLWkMyvJ76ys437PT1EmMj8f/exec', {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("https://script.google.com/macros/s/AKfycbzjlnB7zrSNxojf_pDNmJZFYaViMj08eGqmjfJTQdiOhLWkMyvJ76ys437PT1EmMj8f/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-    });
-  
-      if (response.ok) {
+      });
+      if (response) {
         setIsSuccess(true);
-        e.currentTarget.reset();
-        setTimeout(() => setIsSuccess(false), 3000);
+        setFormData({ name: "", email: "", company: "", service: "", message: "" });
+
+        setTimeout(() => {
+          setIsSuccess(false);
+        }, 3000);
       }
     } catch (error) {
       console.error("Error submitting form", error);
+      setIsError(true);
     }
-  
+
     setIsSubmitting(false);
   };
-  
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
@@ -54,23 +63,23 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="name">Name</Label>
-          <Input id="name" name="name" placeholder="Your name" required />
+          <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Your name" required />
         </div>
 
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>
-          <Input id="email" name="email" type="email" placeholder="your@email.com" required />
+          <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="your@email.com" required />
         </div>
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="company">Company</Label>
-        <Input id="company" name="company" placeholder="Your company name" />
+        <Input id="company" name="company" value={formData.company} onChange={handleChange} placeholder="Your company name" />
       </div>
 
       <div className="space-y-2">
         <Label htmlFor="service">Service Interested In</Label>
-        <Select name="service">
+        <Select value={formData.service} onValueChange={handleSelectChange}>
           <SelectTrigger>
             <SelectValue placeholder="Select a service" />
           </SelectTrigger>
@@ -85,20 +94,19 @@ export default function ContactForm() {
 
       <div className="space-y-2">
         <Label htmlFor="message">Message</Label>
-        <Textarea id="message" name="message" placeholder="Tell us about your project" className="min-h-[120px]" required />
+        <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your project" className="min-h-[120px]" required />
       </div>
 
       <div className="flex items-center gap-2">
-      <Button
-  type="button"
-  variant="outline"
-  className="flex items-center gap-2"
-  onClick={() => window.open("https://calendly.com/faiq55555", "_blank")}
->
-  <CalendarIcon className="h-4 w-4" />
-  Schedule a Call
-</Button>
-
+        <Button
+          type="button"
+          variant="outline"
+          className="flex items-center gap-2"
+          onClick={() => window.open("https://calendly.com/faiq55555", "_blank")}
+        >
+          <CalendarIcon className="h-4 w-4" />
+          Schedule a Call
+        </Button>
 
         <Button type="submit" className="flex-1" disabled={isSubmitting}>
           {isSubmitting ? (
@@ -114,13 +122,13 @@ export default function ContactForm() {
 
       {isSuccess && (
         <div className="rounded-md bg-green-50 p-4 text-sm text-green-800 dark:bg-green-900/50 dark:text-green-300">
-          Thank you! Your message has been sent successfully. We'll get back to you soon.
+          ✅ Thank you! Your message has been sent successfully. We'll get back to you soon.
         </div>
       )}
 
       {isError && (
         <div className="rounded-md bg-red-50 p-4 text-sm text-red-800 dark:bg-red-900/50 dark:text-red-300">
-          Something went wrong. Please try again.
+          ❌ Something went wrong. Please try again.
         </div>
       )}
     </form>
